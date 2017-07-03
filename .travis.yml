@@ -1,10 +1,17 @@
 dist: trusty
 sudo: false
+
 language: node_js
+
 node_js:
-  - 4
-  - 6
-  - 7
-script: npm run ci
+  - "6"
+
+script: "./node_modules/.bin/renovate"
+
 notifications:
   email: false
+
+install:
+  - git clone git@github.com:$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
+  - cd $TRAVIS_REPO_SLUG
+  - npm install
